@@ -17,7 +17,7 @@
     <div id="app">
         <div class="container">
             <div class="card mt-5">
-                <h3 class="card-header">{{ appTitle }}</h3>
+                <h3 class="card-header alert alert-success">{{ appTitle }}</h3>
                 <div class="card-body">
                     <table class="table table-striped">
                         <thead class="bg-secondary text-white">
@@ -30,7 +30,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="( user, index ) in users" :key="index" >
+                            <tr v-for="( user, index ) in users" :key="index">
                                 <td>
                                     {{user.id}}
                                 </td>
@@ -42,14 +42,54 @@
                                 </td>
                                 <td>
                                     {{user.gender}}
-                                </td>
+                                </td> 
                                 <td>
-                                    <button class="btn btn-primary btn-sm" @click.prevent="edit()">Update</button>
-                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                    <button class="btn btn-success btn-sm" @click.prevent="edit(user)"
+                                        data-toggle="modal" data-target="#exampleModal">Update</button>
+                                    <button class="btn btn-danger btn-sm" @click="destroy(index)">Delete</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Update {{ userUpdate.name }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                              <label for="name">Nama</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="name"                              
+                                v-model="userUpdate.name"
+                              >
+                              <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select
+                                    class="form-control"
+                                    id="gender"
+                                    v-model="userUpdate.gender"
+                                >
+                                  <option v-for="(gender, index) in genders " :key="index">
+                                      {{ gender }}
+                                  </option>
+                                </selectclass="form-control">
+                              </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

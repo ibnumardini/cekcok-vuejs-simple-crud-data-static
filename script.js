@@ -3,7 +3,7 @@ const vueApp = new Vue({
     data: function () {
         return {
             appName: `User Management`,
-            author: `kurstud.io`,
+            author: `Kurstud.io Corp`,
             users: [{
                 "id": 1,
                 "name": "Michale Castel",
@@ -29,7 +29,11 @@ const vueApp = new Vue({
                 "name": "Marjy Dargie",
                 "email": "mdargie4@shinystat.com",
                 "gender": "Female"
-            }]
+            }],
+            userUpdate: {},
+            genders: [
+                "Male", "Female"
+            ]
         }
     },
     computed: {
@@ -39,8 +43,15 @@ const vueApp = new Vue({
     },
 
     methods: {
-        edit(){
-            console.log('edit')
+        edit(user) {
+            // console.log(user)
+            this.userUpdate = user
+        },
+        destroy(indexUser) {
+            let quest = confirm("Are you sure?")
+            if (quest) {
+                this.users.splice(indexUser, 1)
+            }
         }
     }
 
