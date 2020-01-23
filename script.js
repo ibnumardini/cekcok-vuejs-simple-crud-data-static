@@ -36,5 +36,12 @@ const vueApp = new Vue({
         appTitle() {
             return this.appName + ' by ' + this.author
         }
+    },
+
+    methods: {
+        edit(){
+            console.log('edit')
+        }
     }
+
 })

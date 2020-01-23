@@ -19,21 +19,34 @@
             <div class="card mt-5">
                 <h3 class="card-header">{{ appTitle }}</h3>
                 <div class="card-body">
-                    <table class="table">
-                        <thead class="thead-dark">
+                    <table class="table table-striped">
+                        <thead class="bg-secondary text-white">
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
+                                <th scope="col">Id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                            <tr v-for="( user, index ) in users" :key="index" >
+                                <td>
+                                    {{user.id}}
+                                </td>
+                                <td>
+                                    {{user.name}}
+                                </td>
+                                <td>
+                                    {{user.email}}
+                                </td>
+                                <td>
+                                    {{user.gender}}
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm" @click.prevent="edit()">Update</button>
+                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
