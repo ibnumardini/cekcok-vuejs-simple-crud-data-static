@@ -1,6 +1,6 @@
 [![License](https://poser.pugx.org/october/october/license.svg)](#)
 
-## What this?
+## What is this?
 
 Learning about vue.js, with case study management user :)
 
